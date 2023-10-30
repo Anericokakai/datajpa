@@ -2,6 +2,7 @@ package com.example.datajpa.controller;
 
 import com.example.datajpa.models.User;
 import com.example.datajpa.services.UserService;
+import com.example.datajpa.tdo.CustomerRequest;
 import com.example.datajpa.tdo.UserRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.repository.query.Param;
@@ -24,6 +25,10 @@ public class UserControler {
         var user=userService.getuserByEmail(email);
         return  ResponseEntity.ok().body(user);
 
+    }
+    @PostMapping("/new/cust")
+    public  String  saveCust(@RequestBody CustomerRequest customerRequest){
+        return  userService.saveCustomers(customerRequest);
     }
 
     @GetMapping(value ="/find")
